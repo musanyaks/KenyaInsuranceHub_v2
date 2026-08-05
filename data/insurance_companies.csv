@@ -1,0 +1,29 @@
+company_id,company_name,category,license_status,year_established,headquarters,website,phone,email,contact_person,branches_count,market_share_percent,financial_rating,claims_settlement_rating,regulatory_compliance,ira_license_number
+IRA001,Jubilee Insurance Company Limited,Composite,Active,1937,Nairobi,www.jubileeinsurance.com,+254 20 3285000,info@jubileeinsurance.com,Julius Kipng'etich,38,15.2,A,Excellent,Compliant,IRA/01/001
+IRA002,Britam Insurance Company,Composite,Active,1965,Nairobi,www.britam.com,+254 20 2839000,info@britam.com,Tom Gitogo,25,12.8,A,Excellent,Compliant,IRA/01/002
+IRA003,CIC Insurance Group Limited,Composite,Active,1984,Nairobi,www.cic.co.ke,+254 20 2823000,info@cic.co.ke,Nelson Kuria,28,10.5,A-,Very Good,Compliant,IRA/01/003
+IRA004,APA Insurance Limited,Composite,Active,1979,Nairobi,www.apainsurance.org,+254 20 2860000,info@apainsurance.org,Ashok Shah,22,8.3,A-,Good,Compliant,IRA/01/004
+IRA005,UAP Old Mutual Insurance,Composite,Active,1920,Nairobi,www.uapoldmutual.com,+254 20 2850000,info@uapoldmutual.com,Peter Mwangi,30,9.1,A,Excellent,Compliant,IRA/01/005
+IRA006,Kenindia Assurance Company Limited,Composite,Active,1978,Nairobi,www.kenindia.co.ke,+254 20 2229861,info@kenindia.co.ke,Rajesh Shah,15,3.2,B+,Good,Compliant,IRA/01/006
+IRA007,Pacis Insurance Company Limited,General,Active,1994,Nairobi,www.pacisinsurance.com,+254 20 2718860,info@pacisinsurance.com,John Mwangi,12,2.8,B+,Good,Compliant,IRA/01/007
+IRA008,Madison Insurance Company Kenya Limited,Life,Active,1988,Nairobi,www.madison.co.ke,+254 20 2859000,info@madison.co.ke,John Mwangi,18,4.5,A-,Very Good,Compliant,IRA/01/008
+IRA009,Heritage Insurance Company Limited,General,Active,1994,Nairobi,www.heritageinsurance.co.ke,+254 20 2741000,info@heritageinsurance.co.ke,Godfrey Kiptum,10,2.1,B,Good,Compliant,IRA/01/009
+IRA010,GA Insurance Limited,Composite,Active,1979,Nairobi,www.gainsurance.com,+254 20 2228531,info@gainsurance.com,John Mwangi,14,3.8,B+,Good,Compliant,IRA/01/010
+IRA011,AIG Kenya Insurance Company Limited,General,Active,1972,Nairobi,www.aig.co.ke,+254 20 2719922,info@aig.co.ke,John Mwangi,8,2.5,A-,Good,Compliant,IRA/01/011
+IRA012,Canon Assurance Company Limited,Composite,Active,1976,Nairobi,www.canonassurance.com,+254 20 2222111,info@canonassurance.com,John Mwangi,10,1.9,B,Good,Compliant,IRA/01/012
+IRA013,First Assurance Company Limited,Composite,Active,1933,Nairobi,www.firstassurance.co.ke,+254 20 3286000,info@firstassurance.co.ke,John Mwangi,16,3.1,B+,Good,Compliant,IRA/01/014
+IRA014,ICEA Lion General Insurance,General,Active,2011,Nairobi,www.icealion.co.ke,+254 20 2888000,info@icealion.co.ke,John Mwangi,20,4.2,A-,Very Good,Compliant,IRA/01/015
+IRA015,ICEA Lion Life Assurance,Life,Active,2011,Nairobi,www.icealion.co.ke,+254 20 2888000,info@icealion.co.ke,John Mwangi,20,3.9,A-,Very Good,Compliant,IRA/01/016
+IRA016,Liberty Life Assurance Kenya Limited,Life,Active,1964,Nairobi,www.liberty.co.ke,+254 20 2859000,info@liberty.co.ke,John Mwangi,15,3.5,A,Excellent,Compliant,IRA/01/017
+IRA017,Metropolitan Life Insurance Kenya,Life,Active,2015,Nairobi,www.metropolitan.co.ke,+254 20 2719000,info@metropolitan.co.ke,John Mwangi,8,1.8,B+,Good,Compliant,IRA/01/018
+IRA018,Old Mutual Life Assurance Company Limited,Life,Active,1920,Nairobi,www.oldmutual.co.ke,+254 20 2850000,info@oldmutual.co.ke,Peter Mwangi,12,2.7,A-,Very Good,Compliant,IRA/01/019
+IRA019,Phoenix of East Africa Assurance,Composite,Active,1984,Nairobi,www.phoenixofea.com,+254 20 2222000,info@phoenixofea.com,John Mwangi,9,1.5,B,Good,Compliant,IRA/01/020
+IRA020,Takaful Insurance of Africa Limited,Islamic,Active,2008,Nairobi,www.takafulafrica.com,+254 20 2718000,info@takafulafrica.com,Hassan Bashir,6,1.2,B+,Good,Compliant,IRA/01/021
+IRA021,Trident Insurance Company Limited,General,Active,1981,Nairobi,www.trident.co.ke,+254 20 2223333,info@trident.co.ke,John Mwangi,7,1.1,B,Good,Compliant,IRA/01/022
+IRA022,Xplico Insurance Company Limited,General,Active,2015,Nairobi,www.xplico.co.ke,+254 20 2717000,info@xplico.co.ke,John Mwangi,5,0.8,B-,Fair,Compliant,IRA/01/023
+IRA023,Sanlam Kenya PLC,Life,Active,1965,Nairobi,www.sanlam.co.ke,+254 20 2850000,info@sanlam.co.ke,John Mwangi,10,2.3,A-,Good,Compliant,IRA/01/024
+IRA024,Mayfair Insurance Company Limited,General,Active,1992,Nairobi,www.mayfair.co.ke,+254 20 2224444,info@mayfair.co.ke,John Mwangi,6,0.9,B,Good,Compliant,IRA/01/025
+IRA025,Kenya Orient Insurance Limited,General,Active,1982,Nairobi,www.kenyaorient.co.ke,+254 20 2855000,info@kenyaorient.co.ke,John Mwangi,11,1.6,B+,Good,Compliant,IRA/01/026
+IRA026,Directline Assurance Company Limited,General,Active,1998,Nairobi,www.directline.co.ke,+254 20 2716000,info@directline.co.ke,John Mwangi,8,1.4,B,Good,Compliant,IRA/01/027
+IRA027,Intra Africa Assurance Company Limited,Composite,Active,1981,Nairobi,www.intraafrica.co.ke,+254 20 2225555,info@intraafrica.co.ke,John Mwangi,7,1.0,B,Good,Compliant,IRA/01/028
+IRA028,Co-operative Insurance Company of Kenya,Composite,Active,1973,Nairobi,www.cic.co.ke,+254 20 2823000,info@cic.co.ke,Nelson Kuria,20,5.1,A-,Very Good,Compliant,IRA/01/029

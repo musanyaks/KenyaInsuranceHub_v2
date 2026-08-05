@@ -1,0 +1,70 @@
+product_id,company_id,product_name,category,sub_category,description,coverage_type,min_age,max_age,waiting_period_days,max_sum_insured_kes,premium_frequency,optional_riders,target_market,popular_rating
+PROD001,IRA001,Jubilee Health Insurance,Health,Medical Cover,Comprehensive inpatient and outpatient medical cover,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Families,4.5
+PROD002,IRA001,Jubilee Motor Comprehensive,Motor,Comprehensive,Full cover for private vehicles including theft and third party,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Accident,Private Vehicle Owners,4.3
+PROD003,IRA001,Jubilee Motor Third Party,Motor,Third Party,Legal liability cover for third party injury and property damage,Third Party Only,18,75,0,5000000,Annual,None,Private Vehicle Owners,4.0
+PROD004,IRA001,Jubilee Life Assurance,Life,Term Life,Financial protection for family in case of death,Death Benefit,18,65,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,Income Earners,4.4
+PROD005,IRA001,Jubilee Education Policy,Life,Education,Save for children's education with life cover,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
+PROD006,IRA002,Britam Medical Insurance,Health,Medical Cover,Comprehensive health insurance for individuals and families,Inpatient/Outpatient,0,80,30,15000000,Monthly/Annual,Optical/Dental/Maternity/Wellness,Individuals/Corporate,4.6
+PROD007,IRA002,Britam Motor Comprehensive,Motor,Comprehensive,All-risk motor insurance for private and commercial vehicles,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Entertainment Unit,Vehicle Owners,4.4
+PROD008,IRA002,Britam Third Party Motor,Motor,Third Party,Mandatory third party liability cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.1
+PROD009,IRA002,Britam Life Cover,Life,Term Life,Protection against death with optional critical illness rider,Death Benefit,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.5
+PROD010,IRA002,Britam Pension Plan,Life,Retirement,Retirement savings with guaranteed returns,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed/Self-employed,4.3
+PROD011,IRA003,CIC Health Insurance,Health,Medical Cover,Affordable health cover with wide hospital network,Inpatient/Outpatient,0,80,30,8000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Families,4.2
+PROD012,IRA003,CIC Motor Private Comprehensive,Motor,Comprehensive,Comprehensive cover for private cars,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Effects,Private Car Owners,4.1
+PROD013,IRA003,CIC Motor Commercial Comprehensive,Motor,Comprehensive,Comprehensive cover for commercial vehicles,Comprehensive,18,75,0,15000000,Annual,Goods in Transit/Public Liability,Commercial Vehicle Owners,4.0
+PROD014,IRA003,CIC Third Party Motor,Motor,Third Party,Basic third party liability cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.9
+PROD015,IRA003,CIC Life Assurance,Life,Term Life,Life protection with flexible premium payment,Death Benefit,18,65,0,30000000,Monthly/Annual/Quarterly,Critical Illness,Income Earners,4.0
+PROD016,IRA004,APA Health Insurance,Health,Medical Cover,Comprehensive medical insurance with cashless facility,Inpatient/Outpatient,0,80,30,12000000,Monthly/Annual,Optical/Dental/Maternity/Wellness,Individuals/Corporate,4.4
+PROD017,IRA004,APA Motor Comprehensive,Motor,Comprehensive,Full motor cover with roadside assistance,Comprehensive,18,75,0,8000000,Annual,Excess Waiver/Roadside Assist,Vehicle Owners,4.2
+PROD018,IRA004,APA Third Party Motor,Motor,Third Party,Third party liability insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.0
+PROD019,IRA004,APA Life Cover,Life,Term Life,Term life assurance with living benefits,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,All Adults,4.3
+PROD020,IRA005,UAP Health Insurance,Health,Medical Cover,Premium health insurance with international coverage,Inpatient/Outpatient,0,80,30,20000000,Monthly/Annual,Optical/Dental/Maternity/Wellness/Evacuation,High Net Worth,4.5
+PROD021,IRA005,UAP Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover with 24/7 support,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Personal Accident,Vehicle Owners,4.3
+PROD022,IRA005,UAP Third Party Motor,Motor,Third Party,Third party motor insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.1
+PROD023,IRA005,UAP Life Assurance,Life,Term Life,Life cover with investment component,Death Benefit/Investment,18,65,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.4
+PROD024,IRA006,Kenindia Health Insurance,Health,Medical Cover,Health cover with Indian hospital network,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Asian Community,3.8
+PROD025,IRA006,Kenindia Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD026,IRA006,Kenindia Life Assurance,Life,Term Life,Life protection plan,Death Benefit,18,65,0,20000000,Monthly/Annual,Critical Illness,Income Earners,3.8
+PROD027,IRA007,Pacis Health Insurance,Health,Medical Cover,Faith-based health insurance,Inpatient/Outpatient,0,80,30,6000000,Monthly/Annual,Optical/Dental,Christian Community,4.0
+PROD028,IRA007,Pacis Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD029,IRA008,Madison Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,All Adults,4.2
+PROD030,IRA008,Madison Education Plan,Life,Education,Education savings with life cover,Endowment/Savings,0,18,0,3000000,Monthly/Annual,None,Parents,4.1
+PROD031,IRA008,Madison Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.0
+PROD032,IRA009,Heritage Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.8
+PROD033,IRA009,Heritage Third Party Motor,Motor,Third Party,Third party motor cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.7
+PROD034,IRA010,GA Health Insurance,Health,Medical Cover,Health insurance with wellness programs,Inpatient/Outpatient,0,80,30,7000000,Monthly/Annual,Optical/Dental/Wellness,Individuals,4.0
+PROD035,IRA010,GA Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD036,IRA011,AIG Motor Comprehensive,Motor,Comprehensive,International standard motor insurance,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Roadside Assist,Vehicle Owners,4.1
+PROD037,IRA011,AIG Third Party Motor,Motor,Third Party,Third party motor insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.0
+PROD038,IRA012,Canon Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.8
+PROD039,IRA012,Canon Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD040,IRA013,First Assurance Health,Health,Medical Cover,Health insurance with sports cover,Inpatient/Outpatient,0,80,30,8000000,Monthly/Annual,Optical/Dental/Sports,Active Individuals,4.0
+PROD041,IRA013,First Assurance Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD042,IRA014,ICEA Lion Health Insurance,Health,Medical Cover,Comprehensive health insurance,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Corporate,4.3
+PROD043,IRA014,ICEA Lion Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,8000000,Annual,Excess Waiver,Vehicle Owners,4.1
+PROD044,IRA015,ICEA Lion Life Cover,Life,Term Life,Life assurance with investment benefits,Death Benefit/Investment,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness,All Adults,4.2
+PROD045,IRA015,ICEA Lion Pension Plan,Life,Retirement,Retirement savings with life cover,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.1
+PROD046,IRA016,Liberty Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD/Disability,All Adults,4.4
+PROD047,IRA016,Liberty Education Plan,Life,Education,Education savings plan,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
+PROD048,IRA016,Liberty Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed/Self-employed,4.3
+PROD049,IRA017,Metropolitan Life Cover,Life,Term Life,Affordable life assurance,Death Benefit,18,65,0,20000000,Monthly/Annual,Critical Illness,Low-Middle Income,4.0
+PROD050,IRA018,Old Mutual Life Cover,Life,Term Life,Life cover with savings component,Death Benefit/Investment,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.3
+PROD051,IRA018,Old Mutual Education Plan,Life,Education,Education savings with life cover,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
+PROD052,IRA018,Old Mutual Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.2
+PROD053,IRA019,Phoenix Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.7
+PROD054,IRA019,Phoenix Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.6
+PROD055,IRA020,Takaful Health Insurance,Health,Medical Cover,Sharia-compliant health insurance,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Muslim Community,4.1
+PROD056,IRA020,Takaful Motor Comprehensive,Motor,Comprehensive,Sharia-compliant motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,4.0
+PROD057,IRA021,Trident Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD058,IRA022,Xplico Motor Comprehensive,Motor,Comprehensive,Affordable comprehensive motor cover,Comprehensive,18,75,0,3000000,Annual,Excess Waiver,Budget Conscious,3.5
+PROD059,IRA022,Xplico Third Party Motor,Motor,Third Party,Affordable third party cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.5
+PROD060,IRA023,Sanlam Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.2
+PROD061,IRA023,Sanlam Education Plan,Life,Education,Education savings plan,Endowment/Savings,0,18,0,3000000,Monthly/Annual,None,Parents,4.1
+PROD062,IRA023,Sanlam Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.1
+PROD063,IRA024,Mayfair Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.6
+PROD064,IRA025,Kenya Orient Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.8
+PROD065,IRA026,Directline Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD066,IRA027,Intra Africa Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.6
+PROD067,IRA027,Intra Africa Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.5
+PROD068,IRA028,CIC Health Insurance (Co-op),Health,Medical Cover,Co-operative health insurance,Inpatient/Outpatient,0,80,30,6000000,Monthly/Annual,Optical/Dental/Maternity,Co-op Members,4.1
+PROD069,IRA028,CIC Motor Private (Co-op),Motor,Comprehensive,Co-operative motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Co-op Members,4.0

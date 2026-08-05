@@ -1,0 +1,240 @@
+/* ============================================================
+   Kenya Insurance Hub v2 - Custom Styles
+   Glassmorphism | Dark/Light | Animations | Responsive
+   ============================================================ */
+
+:root {
+  --glass-bg: rgba(255, 255, 255, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.4);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.08);
+  --card-bg: #ffffff;
+  --text-primary: #1a1a2e;
+  --text-secondary: #6c757d;
+  --accent-gradient: linear-gradient(135deg, #0066CC 0%, #00A3E0 100%);
+  --bg-gradient: linear-gradient(135deg, #f5f7fa 0%, #e4e8ec 100%);
+}
+
+[data-theme="dark"] {
+  --glass-bg: rgba(30, 30, 50, 0.65);
+  --glass-border: rgba(255, 255, 255, 0.08);
+  --glass-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+  --card-bg: #1e1e2f;
+  --text-primary: #f0f0f5;
+  --text-secondary: #a0a0b0;
+  --bg-gradient: linear-gradient(135deg, #0f0f1a 0%, #1a1a2e 100%);
+}
+
+body {
+  background: var(--bg-gradient) !important;
+  color: var(--text-primary);
+  transition: background 0.3s ease, color 0.3s ease;
+}
+
+.content-wrapper, .content {
+  background: transparent !important;
+}
+
+.glass-card {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(16px) saturate(180%);
+  -webkit-backdrop-filter: blur(16px) saturate(180%);
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 16px !important;
+  box-shadow: var(--glass-shadow) !important;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.glass-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(0, 102, 204, 0.15) !important;
+}
+
+.glass-card .card-header {
+  background: rgba(0, 102, 204, 0.08) !important;
+  border-bottom: 1px solid var(--glass-border) !important;
+  border-radius: 16px 16px 0 0 !important;
+}
+
+.small-box, .info-box, .bs4-value-box {
+  border-radius: 16px !important;
+  backdrop-filter: blur(10px);
+  transition: all 0.3s ease;
+}
+
+.bs4-value-box:hover {
+  transform: scale(1.03);
+}
+
+.counter-anim {
+  font-size: 2rem;
+  font-weight: 700;
+  background: var(--accent-gradient);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.company-logo-card {
+  transition: transform 0.3s ease;
+}
+.company-logo-card:hover {
+  transform: scale(1.1) rotate(3deg);
+}
+
+.comparison-wizard {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  border-radius: 16px;
+  padding: 1.5rem;
+  margin-bottom: 1rem;
+  transition: all 0.3s ease;
+}
+
+.comparison-wizard.best { border-left: 4px solid #00C853; }
+.comparison-wizard.value { border-left: 4px solid #FFB300; }
+.comparison-wizard.budget { border-left: 4px solid #00B8D4; }
+
+.premium-highlight {
+  background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+  color: white;
+  padding: 1.5rem;
+  border-radius: 16px;
+  box-shadow: 0 8px 24px rgba(102, 126, 234, 0.3);
+}
+
+.control-sidebar {
+  background: var(--glass-bg) !important;
+  backdrop-filter: blur(20px) saturate(180%) !important;
+  border-left: 1px solid var(--glass-border) !important;
+}
+
+.btn-glass {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+}
+.btn-glass:hover {
+  background: rgba(0, 102, 204, 0.15);
+  border-color: #0066CC;
+}
+
+.main-sidebar {
+  background: linear-gradient(180deg, #1a1a2e 0%, #16213e 100%) !important;
+}
+
+.nav-sidebar .nav-link {
+  border-radius: 12px;
+  margin: 4px 8px;
+  transition: all 0.3s ease;
+}
+.nav-sidebar .nav-link:hover {
+  background: rgba(0, 102, 204, 0.2) !important;
+  transform: translateX(4px);
+}
+.nav-sidebar .nav-link.active {
+  background: linear-gradient(135deg, #0066CC, #00A3E0) !important;
+  box-shadow: 0 4px 12px rgba(0, 102, 204, 0.3);
+}
+
+.theme-toggle {
+  background: var(--glass-bg);
+  backdrop-filter: blur(10px);
+  border: 1px solid var(--glass-border);
+  border-radius: 50%;
+  width: 40px;
+  height: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+.theme-toggle:hover {
+  transform: rotate(20deg);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+table.dataTable {
+  border-radius: 12px;
+  overflow: hidden;
+}
+table.dataTable thead th {
+  background: linear-gradient(135deg, #0066CC, #00A3E0) !important;
+  color: white !important;
+  font-weight: 600;
+  border: none !important;
+}
+table.dataTable tbody tr:hover {
+  background: rgba(0, 102, 204, 0.05) !important;
+}
+.dt-buttons .btn {
+  border-radius: 8px !important;
+  margin-right: 4px;
+}
+
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { background: transparent; }
+::-webkit-scrollbar-thumb {
+  background: linear-gradient(180deg, #0066CC, #00A3E0);
+  border-radius: 4px;
+}
+
+@media (max-width: 768px) {
+  .glass-card { margin-bottom: 1rem; }
+  .counter-anim { font-size: 1.5rem; }
+  .comparison-wizard { padding: 1rem; }
+}
+
+.waiter-overlay {
+  background: linear-gradient(135deg, #1a1a2e, #0066CC) !important;
+}
+.waiter-overlay .waiter-content { color: white; }
+
+.shiny-notification {
+  backdrop-filter: blur(16px);
+  background: var(--glass-bg) !important;
+  border: 1px solid var(--glass-border) !important;
+  border-radius: 12px !important;
+  box-shadow: 0 8px 32px rgba(0,0,0,0.2) !important;
+}
+
+.tip-card {
+  background: var(--glass-bg);
+  backdrop-filter: blur(8px);
+  border: 1px solid var(--glass-border);
+  border-radius: 12px;
+  padding: 1rem;
+  margin-bottom: 0.75rem;
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  transition: all 0.3s ease;
+}
+.tip-card:hover {
+  transform: translateX(8px);
+  border-left: 4px solid #0066CC;
+}
+
+.author-avatar {
+  border-radius: 50%;
+  border: 4px solid #0066CC;
+  box-shadow: 0 8px 24px rgba(0, 102, 204, 0.3);
+  transition: all 0.3s ease;
+}
+.author-avatar:hover {
+  transform: scale(1.05);
+  box-shadow: 0 12px 32px rgba(0, 102, 204, 0.4);
+}
+
+.reveal {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.6s ease;
+}
+.reveal.active {
+  opacity: 1;
+  transform: translateY(0);
+}
