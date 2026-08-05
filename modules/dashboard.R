@@ -25,7 +25,7 @@ dashboard_ui <- function(id) {
     ),
     fluidRow(
       glass_card(
-        title = "Top Rated Companies", width = 6, status = "primary", solidHeader = TRUE,
+        title = "Top Rated Companies", width = 6, status = "primary", solidHeader = TRUE, maximizable = TRUE,
         DTOutput(ns("top_companies"))
       ),
       glass_card(

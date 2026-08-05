@@ -20,14 +20,15 @@ companies_ui <- function(id) {
     ),
     fluidRow(
       bs4Card(
-        title = "Insurance Companies", width = 12, status = "primary", solidHeader = TRUE,
+        title = "Insurance Companies", width = 12, status = "primary", solidHeader = TRUE, maximizable = TRUE,
         class = "glass-card",
         DTOutput(ns("companies_table"))
       )
     ),
     fluidRow(
       bs4Card(
-        title = "Company Details", width = 12, status = "info", solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE,
+        id = ns("company_details_card"),
+        title = "Company Details", width = 12, status = "info", solidHeader = TRUE, collapsible = TRUE, collapsed = TRUE, maximizable = TRUE,
         class = "glass-card",
         uiOutput(ns("company_detail"))
       )
@@ -53,17 +54,27 @@ companies_server <- function(id) {
       df
     })
 
+    observeEvent(input$companies_table_rows_selected, {
+      sel <- input$companies_table_rows_selected
+      if (!is.null(sel) && length(sel) == 1 && sel <= nrow(filtered())) {
+        if (isTRUE(input$company_details_card$collapsed)) {
+          updateBox("company_details_card", session = session, action = "toggle")
+        }
+      }
+    })
+
     output$companies_table <- renderDT({
       filtered() %>%
         select(company_name, category, year_established, market_share_percent, 
                financial_rating, claims_settlement_rating, branches_count, phone) %>%
         mutate(market_share_percent = paste0(market_share_percent, "%")) %>%
-        dt_export(colnames = c("Company", "Category", "Est.", "Market Share", "Fin. Rating", "Claims Rating", "Branches", "Phone"))
+        dt_export(colnames = c("Company", "Category", "Est.", "Market Share", "Fin. Rating", "Claims Rating", "Branches", "Phone"),
+                  selection = "single")
     })
 
     output$company_detail <- renderUI({
       sel <- input$companies_table_rows_selected
-      if (is.null(sel)) {
+      if (is.null(sel) || length(sel) != 1 || sel > nrow(filtered())) {
         return(div(style = "padding: 20px; text-align: center; color: #999;",
                    icon("hand-pointer", class = "fa-3x"), h4("Select a company to view details")))
       }
@@ -99,13 +110,13 @@ companies_server <- function(id) {
                               tags$span(class = "badge badge-info", style = "margin-right: 8px;", sum(prods$category == cat)), cat)
                         })))
         ),
-        fluidRow(column(12, DTOutput(ns("comp_prods"))))
+        fluidRow(column(12, DTOutput(session$ns("comp_prods"))))
       )
     })
 
     output$comp_prods <- renderDT({
       sel <- input$companies_table_rows_selected
-      if (is.null(sel)) return(NULL)
+      if (is.null(sel) || length(sel) != 1 || sel > nrow(filtered())) return(NULL)
       comp <- filtered()[sel, ]
       insurance_products %>%
         filter(company_id == comp$company_id) %>%

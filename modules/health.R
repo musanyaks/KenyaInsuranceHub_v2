@@ -15,6 +15,7 @@ health_ui <- function(id) {
           column(2, selectInput(ns("sort_by"), "Sort By", choices = c("Premium (Low-High)" = "premium", "Rating (High-Low)" = "rating", "Network Size" = "network"))),
           column(2, div(style = "margin-top: 25px;", actionButton(ns("compare"), "Compare Plans", icon = icon("magnifying-glass"), class = "btn-primary btn-block")))
       )
+      )
     ),
     fluidRow(
       bs4Card(title = "Premium by Age Group", width = 6, status = "primary", solidHeader = TRUE,
@@ -25,7 +26,7 @@ health_ui <- function(id) {
               plotlyOutput(ns("coverage_plot"), height = "350px"))
     ),
     fluidRow(
-      bs4Card(title = "Health Plan Details", width = 12, status = "primary", solidHeader = TRUE,
+      bs4Card(title = "Health Plan Details", width = 12, status = "primary", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("plans_table")))
     )

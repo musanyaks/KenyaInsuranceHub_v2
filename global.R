@@ -138,9 +138,9 @@ show_app_toast <- function(session, title, message, type = "info", duration = 40
 dt_export <- function(data, ...) {
   datatable(
     data,
-    extensions = c("Buttons", "Responsive", "Scroller"),
+    extensions = c("Buttons", "Responsive"),
     options = list(
-      dom = "Bfrtip",
+      dom = "Blfrtip",
       buttons = list(
         list(extend = "copy", text = "<i class='fas fa-copy'></i> Copy", className = "btn-sm btn-outline-primary"),
         list(extend = "csv", text = "<i class='fas fa-file-csv'></i> CSV", className = "btn-sm btn-outline-primary"),
@@ -149,10 +149,9 @@ dt_export <- function(data, ...) {
         list(extend = "print", text = "<i class='fas fa-print'></i> Print", className = "btn-sm btn-outline-secondary")
       ),
       pageLength = 10,
+      lengthMenu = list(c(5, 10, 25, 50, -1), c("5", "10", "25", "50", "All")),
       scrollX = TRUE,
       responsive = TRUE,
-      scroller = TRUE,
-      deferRender = TRUE,
       language = list(
         search = "<i class='fas fa-search'></i>",
         lengthMenu = "Show _MENU_ entries"
@@ -168,7 +167,7 @@ dt_export <- function(data, ...) {
 # EMBEDDED DATASETS
 # ============================================================
 
-insurance_companies <- read.csv(textConnection('
+insurance_companies <- read.csv(textConnection(r"(
 company_id,company_name,category,license_status,year_established,headquarters,website,phone,email,contact_person,branches_count,market_share_percent,financial_rating,claims_settlement_rating,regulatory_compliance,ira_license_number
 IRA001,Jubilee Insurance Company Limited,Composite,Active,1937,Nairobi,www.jubileeinsurance.com,+254 20 3285000,info@jubileeinsurance.com,Julius Kipng'etich,38,15.2,A,Excellent,Compliant,IRA/01/001
 IRA002,Britam Insurance Company,Composite,Active,1965,Nairobi,www.britam.com,+254 20 2839000,info@britam.com,Tom Gitogo,25,12.8,A,Excellent,Compliant,IRA/01/002
@@ -198,9 +197,9 @@ IRA025,Kenya Orient Insurance Limited,General,Active,1982,Nairobi,www.kenyaorien
 IRA026,Directline Assurance Company Limited,General,Active,1998,Nairobi,www.directline.co.ke,+254 20 2716000,info@directline.co.ke,John Mwangi,8,1.4,B,Good,Compliant,IRA/01/027
 IRA027,Intra Africa Assurance Company Limited,Composite,Active,1981,Nairobi,www.intraafrica.co.ke,+254 20 2225555,info@intraafrica.co.ke,John Mwangi,7,1.0,B,Good,Compliant,IRA/01/028
 IRA028,Co-operative Insurance Company of Kenya,Composite,Active,1973,Nairobi,www.cic.co.ke,+254 20 2823000,info@cic.co.ke,Nelson Kuria,20,5.1,A-,Very Good,Compliant,IRA/01/029
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-insurance_products <- read.csv(textConnection('
+insurance_products <- read.csv(textConnection(r"(
 product_id,company_id,product_name,category,sub_category,description,coverage_type,min_age,max_age,waiting_period_days,max_sum_insured_kes,premium_frequency,optional_riders,target_market,popular_rating
 PROD001,IRA001,Jubilee Health Insurance,Health,Medical Cover,Comprehensive inpatient and outpatient medical cover,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Families,4.5
 PROD002,IRA001,Jubilee Motor Comprehensive,Motor,Comprehensive,Full cover for private vehicles including theft and third party,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Accident,Private Vehicle Owners,4.3
@@ -271,7 +270,7 @@ PROD066,IRA027,Intra Africa Health Insurance,Health,Medical Cover,Health insuran
 PROD067,IRA027,Intra Africa Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.5
 PROD068,IRA028,CIC Health Insurance (Co-op),Health,Medical Cover,Co-operative health insurance,Inpatient/Outpatient,0,80,30,6000000,Monthly/Annual,Optical/Dental/Maternity,Co-op Members,4.1
 PROD069,IRA028,CIC Motor Private (Co-op),Motor,Comprehensive,Co-operative motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Co-op Members,4.0
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
 insurance_products$max_sum_insured_kes <- as.numeric(insurance_products$max_sum_insured_kes)
 
@@ -282,7 +281,7 @@ company_ratings <- insurance_products %>%
 insurance_companies <- insurance_companies %>%
   left_join(company_ratings, by = "company_id")
 
-motor_premiums <- read.csv(textConnection('
+motor_premiums <- read.csv(textConnection(r"(
 premium_id,company_id,vehicle_type,vehicle_value_min_kes,vehicle_value_max_kes,age_min_years,age_max_years,comprehensive_rate_percent,comprehensive_min_premium_kes,third_party_premium_kes,excess_kes,notes
 MOT001,IRA001,Saloon Car,500000,1000000,0,5,3.5,25000,7500,20000,Standard rate
 MOT002,IRA001,Saloon Car,1000001,2000000,0,5,3.0,35000,7500,25000,Standard rate
@@ -325,9 +324,9 @@ MOT038,IRA011,SUV/4x4,1000000,3000000,0,5,3.8,55000,7500,30000,International sta
 MOT039,IRA022,Saloon Car,500000,1000000,0,5,2.8,18000,7500,20000,Budget option
 MOT040,IRA022,Saloon Car,1000001,2000000,0,5,2.3,28000,7500,25000,Budget option
 MOT041,IRA022,SUV/4x4,1000000,3000000,0,5,2.6,32000,7500,30000,Budget option
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-health_premiums <- read.csv(textConnection('
+health_premiums <- read.csv(textConnection(r"(
 premium_id,company_id,plan_name,cover_type,inpatient_limit_kes,outpatient_limit_kes,maternity_limit_kes,dental_limit_kes,optical_limit_kes,age_18_30_kes,age_31_40_kes,age_41_50_kes,age_51_60_kes,age_61_80_kes,family_of_4_kes,waiting_period_days,network_hospitals_count
 HEA001,IRA001,Jubilee Premier,Comprehensive,5000000,100000,150000,50000,50000,45000,55000,75000,120000,180000,180000,30,400
 HEA002,IRA001,Jubilee Standard,Comprehensive,3000000,50000,100000,30000,30000,28000,35000,50000,80000,120000,120000,30,350
@@ -350,9 +349,9 @@ HEA018,IRA014,ICEA Lion Premier,Comprehensive,6000000,125000,150000,50000,50000,
 HEA019,IRA014,ICEA Lion Standard,Comprehensive,3500000,75000,100000,35000,35000,28000,35000,50000,75000,110000,110000,30,350
 HEA020,IRA020,Takaful Premier,Comprehensive,4000000,75000,100000,40000,40000,32000,40000,55000,85000,120000,120000,30,200
 HEA021,IRA020,Takaful Standard,Comprehensive,2500000,50000,75000,25000,25000,22000,28000,38000,60000,90000,90000,30,180
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-life_premiums <- read.csv(textConnection('
+life_premiums <- read.csv(textConnection(r"(
 premium_id,company_id,product_name,policy_type,sum_assured_min_kes,sum_assured_max_kes,entry_age_min,entry_age_max,policy_term_min_years,policy_term_max_years,premium_frequency,premium_per_1m_kes_annual,waiting_period_months,surrender_value_years,critical_illness_rider_available,disability_rider_available,accidental_death_benefit
 LIF001,IRA001,Jubilee Term Life,Term Life,1000000,50000000,18,65,5,30,Monthly/Annual,25000,0,0,Yes,Yes,Yes
 LIF002,IRA001,Jubilee Endowment,Endowment,500000,10000000,0,60,10,25,Monthly/Annual,45000,0,3,Yes,Yes,Yes
@@ -381,9 +380,9 @@ LIF024,IRA018,Old Mutual Education,Education,500000,8000000,0,18,5,20,Monthly/An
 LIF025,IRA023,Sanlam Term Life,Term Life,1000000,50000000,18,70,5,25,Monthly/Annual/Quarterly,27000,0,0,Yes,Yes,Yes
 LIF026,IRA023,Sanlam Endowment,Endowment,500000,8000000,0,55,10,20,Monthly/Annual/Quarterly,45000,0,3,Yes,Yes,Yes
 LIF027,IRA023,Sanlam Education,Education,300000,5000000,0,18,5,18,Monthly/Annual,41000,0,2,Yes,No,Yes
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-agriculture_products <- read.csv(textConnection('
+agriculture_products <- read.csv(textConnection(r"(
 product_id,company_id,product_name,crop_type,coverage_type,sum_insured_per_acre_kes,premium_rate_percent,subsidy_available,subsidy_percent,govt_program,min_area_acres,max_area_acres,waiting_period_days,seasons_covered,weather_index_based,eligibility
 AGR001,IRA001,Jubilee Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
 AGR002,IRA001,Jubilee Livestock Insurance,Cattle/Livestock,Mortality,50000,4,Yes,50,KLIP,5,500,30,1,No,Registered pastoralist
@@ -397,9 +396,9 @@ AGR009,IRA005,UAP Weather Index Insurance,Maize,Weather Index,30000,4.5,Yes,50,K
 AGR010,IRA011,AIG Agriculture Insurance,Mixed Crops,Multi-Peril,35000,5.5,No,0,None,1,200,14,2,No,Commercial farmer
 AGR011,IRA014,ICEA Lion Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
 AGR012,IRA028,CIC Co-op Crop Insurance,Maize,Multi-Peril,28000,4.8,Yes,50,KAIP,1,100,14,2,No,Co-op member
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-nhif_data <- read.csv(textConnection('
+nhif_data <- read.csv(textConnection(r"(
 benefit_category,benefit_name,description,coverage_limit_kes,co_payment_required,co_payment_amount_kes,waiting_period_days,eligibility,notes
 Inpatient,General Ward,Admission in general ward,999999999,No,0,0,All members,No co-payment for members
 Inpatient,Private Room,Admission in private room,999999999,Yes,0,0,All members,Co-payment depends on hospital category
@@ -420,12 +419,12 @@ Specialized,Dialysis,Kidney dialysis,999999999,No,0,0,All members,Covered fully
 Specialized,Radiotherapy,Cancer radiotherapy,999999999,No,0,0,All members,Covered fully
 Specialized,Organ Transplant,Kidney transplant,999999999,No,0,0,All members,Covered fully
 Specialized,Rehabilitation,Drug and substance rehabilitation,999999999,No,0,0,All members,Covered fully
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
-regulatory_data <- read.csv(textConnection('
+regulatory_data <- read.csv(textConnection(r"(
 authority_name,full_name,established_year,headquarters,website,phone,email,physical_address,functions,license_renewal_fee_kes,complaint_hotline,annual_report_url
 Insurance Regulatory Authority,Insurance Regulatory Authority of Kenya,2006,Nairobi,www.ira.go.ke,+254 20 4996000,info@ira.go.ke,"Zep-Re Place 1st Floor Longonot Road Upper Hill Nairobi",Regulation and supervision of insurance industry,50000,0709 912 000,https://www.ira.go.ke/annual-reports/
-'), stringsAsFactors = FALSE)
+)"), stringsAsFactors = FALSE)
 
 # ============================================================
 # TIPS DATA

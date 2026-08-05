@@ -6,7 +6,7 @@
 source("global.R")
 
 # Load all modules
-module_files <- list.files("modules", pattern = "\.R$", full.names = TRUE)
+module_files <- list.files("modules", pattern = "\\.R$", full.names = TRUE)
 invisible(sapply(module_files, source))
 
 ui <- dashboardPage(
@@ -38,7 +38,7 @@ ui <- dashboardPage(
       )
     ),
     leftUi = tags$li(
-      class = "nav-item",
+      class = "nav-item dropdown",
       tags$a(
         class = "nav-link",
         href = "https://www.ira.go.ke",
@@ -96,7 +96,7 @@ ui <- dashboardPage(
   ),
 
   body = dashboardBody(
-    useTheme(app_theme),
+    use_theme(app_theme),
     useShinyjs(),
     useWaiter(),
 

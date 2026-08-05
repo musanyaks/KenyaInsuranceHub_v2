@@ -11,23 +11,24 @@ motor_ui <- function(id) {
         fluidRow(
           column(3, selectInput(ns("vehicle_type"), "Vehicle Type",
                                 choices = c("Saloon Car", "SUV/4x4", "Pickup/Truck", "Matatu (14-seater)", "Matatu (33-seater)", "Motorcycle"))),
-          column(3, textInput(ns("vehicle_value"), "Vehicle Value (KES)", value = "1500000", class = "kes-input"),
+          column(3, tagAppendAttributes(textInput(ns("vehicle_value"), "Vehicle Value (KES)", value = "1500000"), class = "kes-input"),
                  div(style = "margin-top: -10px; color: #0066CC; font-weight: bold; font-size: 12px;", textOutput(ns("value_fmt")))),
           column(2, sliderInput(ns("vehicle_age"), "Vehicle Age (Years)", min = 0, max = 15, value = 2)),
           column(2, selectInput(ns("cover_type"), "Cover Type", choices = c("Comprehensive", "Third Party", "Both"))),
           column(2, div(style = "margin-top: 25px;", actionButton(ns("compare"), "Compare Quotes", icon = icon("magnifying-glass"), class = "btn-primary btn-block")))
+      )
       )
     ),
     fluidRow(
       bs4Card(title = "Premium Comparison", width = 8, status = "primary", solidHeader = TRUE,
               class = "glass-card",
               plotlyOutput(ns("comparison_plot"), height = "400px")),
-      bs4Card(title = "Cover Type Comparison", width = 4, status = "info", solidHeader = TRUE,
+      bs4Card(title = "Cover Type Comparison", width = 4, status = "info", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("cover_comparison")))
     ),
     fluidRow(
-      bs4Card(title = "Detailed Quotes", width = 12, status = "primary", solidHeader = TRUE,
+      bs4Card(title = "Detailed Quotes", width = 12, status = "primary", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("quotes_table")))
     )

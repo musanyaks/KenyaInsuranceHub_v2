@@ -15,6 +15,7 @@ agriculture_ui <- function(id) {
           column(3, div(style = "margin-top: 25px;", checkboxInput(ns("subsidy_only"), "Subsidized Only", value = FALSE),
                         actionButton(ns("calculate"), "Calculate", icon = icon("calculator"), class = "btn-primary btn-block")))
       )
+      )
     ),
     fluidRow(
       bs4Card(title = "Premium with Subsidy Breakdown", width = 7, status = "primary", solidHeader = TRUE,
@@ -25,7 +26,7 @@ agriculture_ui <- function(id) {
               uiOutput(ns("subsidy_ui")))
     ),
     fluidRow(
-      bs4Card(title = "Agriculture Insurance Products", width = 12, status = "primary", solidHeader = TRUE,
+      bs4Card(title = "Agriculture Insurance Products", width = 12, status = "primary", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("products_table")))
     )

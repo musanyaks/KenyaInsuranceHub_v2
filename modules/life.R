@@ -10,24 +10,25 @@ life_ui <- function(id) {
         class = "glass-card",
         fluidRow(
           column(2, selectInput(ns("policy_type"), "Policy Type", choices = c("Term Life", "Endowment", "Whole Life", "Education"))),
-          column(2, textInput(ns("sum_assured"), "Sum Assured (KES)", value = "5000000", class = "kes-input"),
+          column(2, tagAppendAttributes(textInput(ns("sum_assured"), "Sum Assured (KES)", value = "5000000"), class = "kes-input"),
                  div(style = "margin-top: -10px; color: #0066CC; font-weight: bold; font-size: 12px;", textOutput(ns("sum_fmt")))),
           column(2, numericInput(ns("age"), "Your Age", value = 30, min = 18, max = 70)),
           column(2, sliderInput(ns("term"), "Policy Term (Years)", min = 5, max = 30, value = 20)),
           column(2, selectInput(ns("rider"), "Include Riders", choices = c("None", "Critical Illness", "Disability", "Both"))),
           column(2, div(style = "margin-top: 25px;", actionButton(ns("compare"), "Compare Products", icon = icon("magnifying-glass"), class = "btn-primary btn-block")))
       )
+      )
     ),
     fluidRow(
       bs4Card(title = "Premium Comparison", width = 8, status = "primary", solidHeader = TRUE,
               class = "glass-card",
               plotlyOutput(ns("comparison_plot"), height = "400px")),
-      bs4Card(title = "Rider Options", width = 4, status = "info", solidHeader = TRUE,
+      bs4Card(title = "Rider Options", width = 4, status = "info", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("rider_table")))
     ),
     fluidRow(
-      bs4Card(title = "Life Insurance Products", width = 12, status = "primary", solidHeader = TRUE,
+      bs4Card(title = "Life Insurance Products", width = 12, status = "primary", solidHeader = TRUE, maximizable = TRUE,
               class = "glass-card",
               DTOutput(ns("products_table")))
     )
