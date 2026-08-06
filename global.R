@@ -1,4 +1,3 @@
-
 # ============================================================
 # Kenya Insurance Hub v2 - Global Configuration & Data
 # ============================================================
@@ -6,24 +5,33 @@
 cat("global.R start:", Sys.time(), "\n"); flush.console()
 
 # Required packages ----
+# NOTE: these are literal library() calls (not a loop over a character vector)
+# on purpose -- rsconnect's dependency scanner only detects packages this way
+# when deciding what to bundle/install on shinyapps.io. A loop using
+# library(p, character.only = TRUE) is invisible to that scanner and will
+# cause packages to silently NOT be installed on deploy.
+suppressPackageStartupMessages({
+  library(shiny)
+  library(bs4Dash)
+  library(shinyWidgets)
+  library(shinyjs)
+  library(waiter)
+  library(DT)
+  library(plotly)
+  library(ggplot2)
+  library(dplyr)
+  library(tidyr)
+  library(scales)
+  library(leaflet)
+  library(fresh)
+  library(htmltools)
+})
+
 packages <- c(
   "shiny", "bs4Dash", "shinyWidgets", "shinyjs", "waiter",
   "DT", "plotly", "ggplot2", "dplyr", "tidyr", "scales",
   "leaflet", "fresh", "htmltools"
 )
-
-# Load packages (do NOT auto-install during app startup on shinyapps.io)
-missing_pkgs <- packages[!sapply(packages, function(p) requireNamespace(p, quietly = TRUE))]
-if (length(missing_pkgs) > 0) {
-  stop(
-    "Missing required packages: ", paste(missing_pkgs, collapse = ", "), 
-    ". Please install them locally or use renv::restore before deploying."
-  )
-}
-# Attach packages with suppressed startup messages
-invisible(lapply(packages, function(p) {
-  suppressPackageStartupMessages(library(p, character.only = TRUE))
-}))
 cat("Packages loaded:", paste(packages, collapse = ", "), "\n"); flush.console()
 
 # ============================================================
