@@ -68,3 +68,4 @@ $(document).ready(function() {
 
   setTimeout(animateCounters, 500);
 });
+

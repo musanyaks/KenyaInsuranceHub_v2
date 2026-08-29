@@ -95,3 +95,4 @@ life_server <- function(id) {
     })
   })
 }
+

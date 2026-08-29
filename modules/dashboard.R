@@ -132,3 +132,4 @@ dashboard_server <- function(id, parent_session) {
     observeEvent(input$qa_agri, { updateTabItems(parent_session, "sidebarMenu", "agriculture") })
   })
 }
+
