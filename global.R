@@ -186,8 +186,8 @@ dt_export <- function(data, ...) {
 cat("Loading embedded datasets...\n"); flush.console()
 
 insurance_companies <- read.csv(textConnection(r"(
-company_id,company_name,category,license_status,year_established,headquarters,website,phone,email,contact_person,branches_count,market_share_percent,financial_rating,claims_settlement_rating,regu[...]
-IRA001,Jubilee Insurance Company Limited,Composite,Active,1937,Nairobi,www.jubileeinsurance.com,+254 20 3285000,info@jubileeinsurance.com,Julius Kipng'etich,38,15.2,A,Excellent,Compliant,IRA/01/0[...]
+company_id,company_name,category,license_status,year_established,headquarters,website,phone,email,contact_person,branches_count,market_share_percent,financial_rating,claims_settlement_rating,regulatory_compliance,ira_license_number
+IRA001,Jubilee Insurance Company Limited,Composite,Active,1937,Nairobi,www.jubileeinsurance.com,+254 20 3285000,info@jubileeinsurance.com,Julius Kipng'etich,38,15.2,A,Excellent,Compliant,IRA/01/001
 IRA002,Britam Insurance Company,Composite,Active,1965,Nairobi,www.britam.com,+254 20 2839000,info@britam.com,Tom Gitogo,25,12.8,A,Excellent,Compliant,IRA/01/002
 IRA003,CIC Insurance Group Limited,Composite,Active,1984,Nairobi,www.cic.co.ke,+254 20 2823000,info@cic.co.ke,Nelson Kuria,28,10.5,A-,Very Good,Compliant,IRA/01/003
 IRA004,APA Insurance Limited,Composite,Active,1979,Nairobi,www.apainsurance.org,+254 20 2860000,info@apainsurance.org,Ashok Shah,22,8.3,A-,Good,Compliant,IRA/01/004
@@ -219,17 +219,76 @@ IRA028,Co-operative Insurance Company of Kenya,Composite,Active,1973,Nairobi,www
 cat("Loaded insurance_companies (rows =", nrow(insurance_companies), ")\n"); flush.console()
 
 insurance_products <- read.csv(textConnection(r"(
-product_id,company_id,product_name,category,sub_category,description,coverage_type,min_age,max_age,waiting_period_days,max_sum_insured_kes,premium_frequency,optional_riders,target_market,popular_[...]
-PROD001,IRA001,Jubilee Health Insurance,Health,Medical Cover,Comprehensive inpatient and outpatient medical cover,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Ind[...]
-PROD002,IRA001,Jubilee Motor Comprehensive,Motor,Comprehensive,Full cover for private vehicles including theft and third party,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Accident[...]
+product_id,company_id,product_name,category,sub_category,description,coverage_type,min_age,max_age,waiting_period_days,max_sum_insured_kes,premium_frequency,optional_riders,target_market,popular_rating
+PROD001,IRA001,Jubilee Health Insurance,Health,Medical Cover,Comprehensive inpatient and outpatient medical cover,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Families,4.5
+PROD002,IRA001,Jubilee Motor Comprehensive,Motor,Comprehensive,Full cover for private vehicles including theft and third party,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Accident,Private Vehicle Owners,4.3
 PROD003,IRA001,Jubilee Motor Third Party,Motor,Third Party,Legal liability cover for third party injury and property damage,Third Party Only,18,75,0,5000000,Annual,None,Private Vehicle Owners,4.0
-PROD004,IRA001,Jubilee Life Assurance,Life,Term Life,Financial protection for family in case of death,Death Benefit,18,65,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,Income Ea[...]
+PROD004,IRA001,Jubilee Life Assurance,Life,Term Life,Financial protection for family in case of death,Death Benefit,18,65,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,Income Earners,4.4
 PROD005,IRA001,Jubilee Education Policy,Life,Education,Save for children's education with life cover,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
-PROD006,IRA002,Britam Medical Insurance,Health,Medical Cover,Comprehensive health insurance for individuals and families,Inpatient/Outpatient,0,80,30,15000000,Monthly/Annual,Optical/Dental/Matern[...]
-PROD007,IRA002,Britam Motor Comprehensive,Motor,Comprehensive,All-risk motor insurance for private and commercial vehicles,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Entertainment Unit,V[...]
+PROD006,IRA002,Britam Medical Insurance,Health,Medical Cover,Comprehensive health insurance for individuals and families,Inpatient/Outpatient,0,80,30,15000000,Monthly/Annual,Optical/Dental/Maternity/Wellness,Individuals/Corporate,4.6
+PROD007,IRA002,Britam Motor Comprehensive,Motor,Comprehensive,All-risk motor insurance for private and commercial vehicles,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Entertainment Unit,Vehicle Owners,4.4
 PROD008,IRA002,Britam Third Party Motor,Motor,Third Party,Mandatory third party liability cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.1
-PROD009,IRA002,Britam Life Cover,Life,Term Life,Protection against death with optional critical illness rider,Death Benefit,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adu[...]
+PROD009,IRA002,Britam Life Cover,Life,Term Life,Protection against death with optional critical illness rider,Death Benefit,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.5
 PROD010,IRA002,Britam Pension Plan,Life,Retirement,Retirement savings with guaranteed returns,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed/Self-employed,4.3
+PROD011,IRA003,CIC Health Insurance,Health,Medical Cover,Affordable health cover with wide hospital network,Inpatient/Outpatient,0,80,30,8000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Families,4.2
+PROD012,IRA003,CIC Motor Private Comprehensive,Motor,Comprehensive,Comprehensive cover for private cars,Comprehensive,18,75,0,5000000,Annual,Excess Waiver/Personal Effects,Private Car Owners,4.1
+PROD013,IRA003,CIC Motor Commercial Comprehensive,Motor,Comprehensive,Comprehensive cover for commercial vehicles,Comprehensive,18,75,0,15000000,Annual,Goods in Transit/Public Liability,Commercial Vehicle Owners,4.0
+PROD014,IRA003,CIC Third Party Motor,Motor,Third Party,Basic third party liability cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.9
+PROD015,IRA003,CIC Life Assurance,Life,Term Life,Life protection with flexible premium payment,Death Benefit,18,65,0,30000000,Monthly/Annual/Quarterly,Critical Illness,Income Earners,4.0
+PROD016,IRA004,APA Health Insurance,Health,Medical Cover,Comprehensive medical insurance with cashless facility,Inpatient/Outpatient,0,80,30,12000000,Monthly/Annual,Optical/Dental/Maternity/Wellness,Individuals/Corporate,4.4
+PROD017,IRA004,APA Motor Comprehensive,Motor,Comprehensive,Full motor cover with roadside assistance,Comprehensive,18,75,0,8000000,Annual,Excess Waiver/Roadside Assist,Vehicle Owners,4.2
+PROD018,IRA004,APA Third Party Motor,Motor,Third Party,Third party liability insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.0
+PROD019,IRA004,APA Life Cover,Life,Term Life,Term life assurance with living benefits,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,All Adults,4.3
+PROD020,IRA005,UAP Health Insurance,Health,Medical Cover,Premium health insurance with international coverage,Inpatient/Outpatient,0,80,30,20000000,Monthly/Annual,Optical/Dental/Maternity/Wellness/Evacuation,High Net Worth,4.5
+PROD021,IRA005,UAP Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover with 24/7 support,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Personal Accident,Vehicle Owners,4.3
+PROD022,IRA005,UAP Third Party Motor,Motor,Third Party,Third party motor insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.1
+PROD023,IRA005,UAP Life Assurance,Life,Term Life,Life cover with investment component,Death Benefit/Investment,18,65,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.4
+PROD024,IRA006,Kenindia Health Insurance,Health,Medical Cover,Health cover with Indian hospital network,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Asian Community,3.8
+PROD025,IRA006,Kenindia Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD026,IRA006,Kenindia Life Assurance,Life,Term Life,Life protection plan,Death Benefit,18,65,0,20000000,Monthly/Annual,Critical Illness,Income Earners,3.8
+PROD027,IRA007,Pacis Health Insurance,Health,Medical Cover,Faith-based health insurance,Inpatient/Outpatient,0,80,30,6000000,Monthly/Annual,Optical/Dental,Christian Community,4.0
+PROD028,IRA007,Pacis Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD029,IRA008,Madison Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/Disability,All Adults,4.2
+PROD030,IRA008,Madison Education Plan,Life,Education,Education savings with life cover,Endowment/Savings,0,18,0,3000000,Monthly/Annual,None,Parents,4.1
+PROD031,IRA008,Madison Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.0
+PROD032,IRA009,Heritage Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.8
+PROD033,IRA009,Heritage Third Party Motor,Motor,Third Party,Third party motor cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.7
+PROD034,IRA010,GA Health Insurance,Health,Medical Cover,Health insurance with wellness programs,Inpatient/Outpatient,0,80,30,7000000,Monthly/Annual,Optical/Dental/Wellness,Individuals,4.0
+PROD035,IRA010,GA Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD036,IRA011,AIG Motor Comprehensive,Motor,Comprehensive,International standard motor insurance,Comprehensive,18,75,0,10000000,Annual,Excess Waiver/Roadside Assist,Vehicle Owners,4.1
+PROD037,IRA011,AIG Third Party Motor,Motor,Third Party,Third party motor insurance,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,4.0
+PROD038,IRA012,Canon Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.8
+PROD039,IRA012,Canon Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD040,IRA013,First Assurance Health,Health,Medical Cover,Health insurance with sports cover,Inpatient/Outpatient,0,80,30,8000000,Monthly/Annual,Optical/Dental/Sports,Active Individuals,4.0
+PROD041,IRA013,First Assurance Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.9
+PROD042,IRA014,ICEA Lion Health Insurance,Health,Medical Cover,Comprehensive health insurance,Inpatient/Outpatient,0,80,30,10000000,Monthly/Annual,Optical/Dental/Maternity,Individuals/Corporate,4.3
+PROD043,IRA014,ICEA Lion Motor Comprehensive,Motor,Comprehensive,Comprehensive motor cover,Comprehensive,18,75,0,8000000,Annual,Excess Waiver,Vehicle Owners,4.1
+PROD044,IRA015,ICEA Lion Life Cover,Life,Term Life,Life assurance with investment benefits,Death Benefit/Investment,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness,All Adults,4.2
+PROD045,IRA015,ICEA Lion Pension Plan,Life,Retirement,Retirement savings with life cover,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.1
+PROD046,IRA016,Liberty Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD/Disability,All Adults,4.4
+PROD047,IRA016,Liberty Education Plan,Life,Education,Education savings plan,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
+PROD048,IRA016,Liberty Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed/Self-employed,4.3
+PROD049,IRA017,Metropolitan Life Cover,Life,Term Life,Affordable life assurance,Death Benefit,18,65,0,20000000,Monthly/Annual,Critical Illness,Low-Middle Income,4.0
+PROD050,IRA018,Old Mutual Life Cover,Life,Term Life,Life cover with savings component,Death Benefit/Investment,18,70,0,100000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.3
+PROD051,IRA018,Old Mutual Education Plan,Life,Education,Education savings with life cover,Endowment/Savings,0,18,0,5000000,Monthly/Annual,None,Parents,4.2
+PROD052,IRA018,Old Mutual Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.2
+PROD053,IRA019,Phoenix Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.7
+PROD054,IRA019,Phoenix Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.6
+PROD055,IRA020,Takaful Health Insurance,Health,Medical Cover,Sharia-compliant health insurance,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Muslim Community,4.1
+PROD056,IRA020,Takaful Motor Comprehensive,Motor,Comprehensive,Sharia-compliant motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,4.0
+PROD057,IRA021,Trident Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD058,IRA022,Xplico Motor Comprehensive,Motor,Comprehensive,Affordable comprehensive motor cover,Comprehensive,18,75,0,3000000,Annual,Excess Waiver,Budget Conscious,3.5
+PROD059,IRA022,Xplico Third Party Motor,Motor,Third Party,Affordable third party cover,Third Party Only,18,75,0,5000000,Annual,None,All Vehicle Owners,3.5
+PROD060,IRA023,Sanlam Life Cover,Life,Term Life,Comprehensive life assurance,Death Benefit,18,70,0,50000000,Monthly/Annual/Quarterly,Critical Illness/TPD,All Adults,4.2
+PROD061,IRA023,Sanlam Education Plan,Life,Education,Education savings plan,Endowment/Savings,0,18,0,3000000,Monthly/Annual,None,Parents,4.1
+PROD062,IRA023,Sanlam Pension Plan,Life,Retirement,Retirement savings plan,Pension/Annuity,18,65,0,999999999,Monthly/Annual,None,Employed,4.1
+PROD063,IRA024,Mayfair Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.6
+PROD064,IRA025,Kenya Orient Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.8
+PROD065,IRA026,Directline Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.7
+PROD066,IRA027,Intra Africa Health Insurance,Health,Medical Cover,Health insurance plan,Inpatient/Outpatient,0,80,30,5000000,Monthly/Annual,Optical/Dental,Individuals,3.6
+PROD067,IRA027,Intra Africa Motor Comprehensive,Motor,Comprehensive,Comprehensive motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Vehicle Owners,3.5
+PROD068,IRA028,CIC Health Insurance (Co-op),Health,Medical Cover,Co-operative health insurance,Inpatient/Outpatient,0,80,30,6000000,Monthly/Annual,Optical/Dental/Maternity,Co-op Members,4.1
+PROD069,IRA028,CIC Motor Private (Co-op),Motor,Comprehensive,Co-operative motor insurance,Comprehensive,18,75,0,5000000,Annual,Excess Waiver,Co-op Members,4.0
 )"), stringsAsFactors = FALSE)
 cat("Loaded insurance_products (rows =", nrow(insurance_products), ")\n"); flush.console()
 
@@ -244,7 +303,7 @@ insurance_companies <- insurance_companies %>%
 cat("Processed company ratings and joined to insurance_companies\n"); flush.console()
 
 motor_premiums <- read.csv(textConnection(r"(
-premium_id,company_id,vehicle_type,vehicle_value_min_kes,vehicle_value_max_kes,age_min_years,age_max_years,comprehensive_rate_percent,comprehensive_min_premium_kes,third_party_premium_kes,excess_[...]
+premium_id,company_id,vehicle_type,vehicle_value_min_kes,vehicle_value_max_kes,age_min_years,age_max_years,comprehensive_rate_percent,comprehensive_min_premium_kes,third_party_premium_kes,excess_kes,notes
 MOT001,IRA001,Saloon Car,500000,1000000,0,5,3.5,25000,7500,20000,Standard rate
 MOT002,IRA001,Saloon Car,1000001,2000000,0,5,3.0,35000,7500,25000,Standard rate
 MOT003,IRA001,Saloon Car,2000001,5000000,0,5,2.5,60000,7500,35000,Standard rate
@@ -255,42 +314,145 @@ MOT007,IRA001,Matatu (14-seater),1500000,3000000,0,5,4.0,60000,7500,40000,PSV ra
 MOT008,IRA001,Matatu (33-seater),2500000,5000000,0,5,4.5,112500,7500,50000,PSV rate
 MOT009,IRA001,Motorcycle,100000,500000,0,5,5.0,5000,5000,10000,Commercial use
 MOT010,IRA002,Saloon Car,500000,1000000,0,5,3.8,28000,7500,20000,Standard rate
+MOT011,IRA002,Saloon Car,1000001,2000000,0,5,3.2,40000,7500,25000,Standard rate
+MOT012,IRA002,Saloon Car,2000001,5000000,0,5,2.8,70000,7500,35000,Standard rate
+MOT013,IRA002,SUV/4x4,1000000,3000000,0,5,3.5,50000,7500,30000,Standard rate
+MOT014,IRA002,SUV/4x4,3000001,8000000,0,5,3.0,105000,7500,50000,Standard rate
+MOT015,IRA002,Pickup/Truck,800000,2500000,0,5,3.2,40000,7500,25000,Standard rate
+MOT016,IRA002,Matatu (14-seater),1500000,3000000,0,5,4.2,63000,7500,40000,PSV rate
+MOT017,IRA002,Matatu (33-seater),2500000,5000000,0,5,4.8,120000,7500,50000,PSV rate
+MOT018,IRA003,Saloon Car,500000,1000000,0,5,3.2,22000,7500,20000,Standard rate
+MOT019,IRA003,Saloon Car,1000001,2000000,0,5,2.8,32000,7500,25000,Standard rate
+MOT020,IRA003,Saloon Car,2000001,5000000,0,5,2.3,55000,7500,35000,Standard rate
+MOT021,IRA003,SUV/4x4,1000000,3000000,0,5,3.0,40000,7500,30000,Standard rate
+MOT022,IRA003,SUV/4x4,3000001,8000000,0,5,2.5,84000,7500,50000,Standard rate
+MOT023,IRA003,Pickup/Truck,800000,2500000,0,5,2.8,30000,7500,25000,Standard rate
+MOT024,IRA003,Matatu (14-seater),1500000,3000000,0,5,3.8,57000,7500,40000,PSV rate
+MOT025,IRA003,Matatu (33-seater),2500000,5000000,0,5,4.2,105000,7500,50000,PSV rate
+MOT026,IRA004,Saloon Car,500000,1000000,0,5,3.6,26000,7500,20000,Standard rate
+MOT027,IRA004,Saloon Car,1000001,2000000,0,5,3.1,38000,7500,25000,Standard rate
+MOT028,IRA004,Saloon Car,2000001,5000000,0,5,2.6,65000,7500,35000,Standard rate
+MOT029,IRA004,SUV/4x4,1000000,3000000,0,5,3.3,47000,7500,30000,Standard rate
+MOT030,IRA004,SUV/4x4,3000001,8000000,0,5,2.9,98000,7500,50000,Standard rate
+MOT031,IRA005,Saloon Car,500000,1000000,0,5,3.7,27000,7500,20000,Standard rate
+MOT032,IRA005,Saloon Car,1000001,2000000,0,5,3.1,42000,7500,25000,Standard rate
+MOT033,IRA005,Saloon Car,2000001,5000000,0,5,2.7,72000,7500,35000,Standard rate
+MOT034,IRA005,SUV/4x4,1000000,3000000,0,5,3.4,48000,7500,30000,Standard rate
+MOT035,IRA005,SUV/4x4,3000001,8000000,0,5,2.9,102000,7500,50000,Standard rate
+MOT036,IRA011,Saloon Car,500000,1000000,0,5,4.0,30000,7500,20000,International standard
+MOT037,IRA011,Saloon Car,1000001,2000000,0,5,3.5,45000,7500,25000,International standard
+MOT038,IRA011,SUV/4x4,1000000,3000000,0,5,3.8,55000,7500,30000,International standard
+MOT039,IRA022,Saloon Car,500000,1000000,0,5,2.8,18000,7500,20000,Budget option
+MOT040,IRA022,Saloon Car,1000001,2000000,0,5,2.3,28000,7500,25000,Budget option
+MOT041,IRA022,SUV/4x4,1000000,3000000,0,5,2.6,32000,7500,30000,Budget option
 )"), stringsAsFactors = FALSE)
 cat("Loaded motor_premiums (rows =", nrow(motor_premiums), ")\n"); flush.console()
 
 health_premiums <- read.csv(textConnection(r"(
-premium_id,company_id,plan_name,cover_type,inpatient_limit_kes,outpatient_limit_kes,maternity_limit_kes,dental_limit_kes,optical_limit_kes,age_18_30_kes,age_31_40_kes,age_41_50_kes,age_51_60_kes,[...]
+premium_id,company_id,plan_name,cover_type,inpatient_limit_kes,outpatient_limit_kes,maternity_limit_kes,dental_limit_kes,optical_limit_kes,age_18_30_kes,age_31_40_kes,age_41_50_kes,age_51_60_kes,age_61_80_kes,family_of_4_kes,waiting_period_days,network_hospitals_count
 HEA001,IRA001,Jubilee Premier,Comprehensive,5000000,100000,150000,50000,50000,45000,55000,75000,120000,180000,180000,30,400
 HEA002,IRA001,Jubilee Standard,Comprehensive,3000000,50000,100000,30000,30000,28000,35000,50000,80000,120000,120000,30,350
 HEA003,IRA001,Jubilee Basic,Inpatient Only,2000000,0,0,0,0,15000,18000,25000,40000,60000,60000,30,300
+HEA004,IRA002,Britam Premier,Comprehensive,10000000,200000,200000,75000,75000,60000,75000,100000,150000,220000,250000,30,450
+HEA005,IRA002,Britam Standard,Comprehensive,5000000,100000,150000,50000,50000,40000,50000,70000,110000,160000,170000,30,400
+HEA006,IRA002,Britam Basic,Inpatient Only,3000000,0,0,0,0,18000,22000,30000,50000,75000,75000,30,350
+HEA007,IRA003,CIC Premier,Comprehensive,5000000,100000,150000,50000,50000,35000,45000,65000,100000,150000,150000,30,380
+HEA008,IRA003,CIC Standard,Comprehensive,3000000,50000,100000,30000,30000,22000,28000,40000,65000,95000,95000,30,320
+HEA009,IRA003,CIC Basic,Inpatient Only,2000000,0,0,0,0,12000,15000,22000,35000,50000,50000,30,280
+HEA010,IRA004,APA Premier,Comprehensive,8000000,150000,200000,60000,60000,50000,65000,90000,130000,190000,200000,30,420
+HEA011,IRA004,APA Standard,Comprehensive,4000000,75000,100000,40000,40000,32000,40000,55000,85000,120000,130000,30,360
+HEA012,IRA004,APA Basic,Inpatient Only,2500000,0,0,0,0,16000,20000,28000,45000,65000,65000,30,300
+HEA013,IRA005,UAP Premier,Comprehensive,15000000,300000,300000,100000,100000,80000,100000,140000,200000,300000,350000,30,500
+HEA014,IRA005,UAP Standard,Comprehensive,8000000,150000,200000,60000,60000,50000,65000,90000,130000,190000,200000,30,450
+HEA015,IRA005,UAP Basic,Inpatient Only,4000000,0,0,0,0,25000,30000,40000,60000,90000,90000,30,380
+HEA016,IRA007,Pacis Premier,Comprehensive,4000000,75000,100000,40000,40000,30000,38000,55000,85000,120000,120000,30,250
+HEA017,IRA007,Pacis Standard,Comprehensive,2500000,50000,75000,25000,25000,20000,25000,35000,55000,80000,80000,30,200
+HEA018,IRA014,ICEA Lion Premier,Comprehensive,6000000,125000,150000,50000,50000,42000,52000,75000,110000,160000,170000,30,400
+HEA019,IRA014,ICEA Lion Standard,Comprehensive,3500000,75000,100000,35000,35000,28000,35000,50000,75000,110000,110000,30,350
+HEA020,IRA020,Takaful Premier,Comprehensive,4000000,75000,100000,40000,40000,32000,40000,55000,85000,120000,120000,30,200
+HEA021,IRA020,Takaful Standard,Comprehensive,2500000,50000,75000,25000,25000,22000,28000,38000,60000,90000,90000,30,180
 )"), stringsAsFactors = FALSE)
 cat("Loaded health_premiums (rows =", nrow(health_premiums), ")\n"); flush.console()
 
 life_premiums <- read.csv(textConnection(r"(
-premium_id,company_id,product_name,policy_type,sum_assured_min_kes,sum_assured_max_kes,entry_age_min,entry_age_max,policy_term_min_years,policy_term_max_years,premium_frequency,premium_per_1m_kes[...]
+premium_id,company_id,product_name,policy_type,sum_assured_min_kes,sum_assured_max_kes,entry_age_min,entry_age_max,policy_term_min_years,policy_term_max_years,premium_frequency,premium_per_1m_kes_annual,waiting_period_months,surrender_value_years,critical_illness_rider_available,disability_rider_available,accidental_death_benefit
 LIF001,IRA001,Jubilee Term Life,Term Life,1000000,50000000,18,65,5,30,Monthly/Annual,25000,0,0,Yes,Yes,Yes
 LIF002,IRA001,Jubilee Endowment,Endowment,500000,10000000,0,60,10,25,Monthly/Annual,45000,0,3,Yes,Yes,Yes
+LIF003,IRA001,Jubilee Whole Life,Whole Life,1000000,30000000,18,55,99,99,Monthly/Annual,35000,0,5,Yes,Yes,Yes
+LIF004,IRA002,Britam Term Life,Term Life,1000000,100000000,18,70,5,30,Monthly/Annual/Quarterly,22000,0,0,Yes,Yes,Yes
+LIF005,IRA002,Britam Endowment,Endowment,500000,15000000,0,60,10,25,Monthly/Annual/Quarterly,42000,0,3,Yes,Yes,Yes
+LIF006,IRA002,Britam Whole Life,Whole Life,1000000,50000000,18,55,99,99,Monthly/Annual/Quarterly,32000,0,5,Yes,Yes,Yes
+LIF007,IRA002,Britam Education Plan,Education,300000,5000000,0,18,5,20,Monthly/Annual,38000,0,2,Yes,No,Yes
+LIF008,IRA003,CIC Term Life,Term Life,1000000,30000000,18,65,5,25,Monthly/Annual,28000,0,0,Yes,Yes,Yes
+LIF009,IRA003,CIC Endowment,Endowment,500000,8000000,0,55,10,20,Monthly/Annual,46000,0,3,Yes,Yes,Yes
+LIF010,IRA004,APA Term Life,Term Life,1000000,50000000,18,70,5,30,Monthly/Annual/Quarterly,24000,0,0,Yes,Yes,Yes
+LIF011,IRA004,APA Endowment,Endowment,500000,10000000,0,60,10,25,Monthly/Annual/Quarterly,43000,0,3,Yes,Yes,Yes
+LIF012,IRA005,UAP Term Life,Term Life,1000000,100000000,18,65,5,30,Monthly/Annual/Quarterly,23000,0,0,Yes,Yes,Yes
+LIF013,IRA005,UAP Endowment,Endowment,500000,15000000,0,60,10,25,Monthly/Annual/Quarterly,40000,0,3,Yes,Yes,Yes
+LIF014,IRA008,Madison Term Life,Term Life,1000000,50000000,18,70,5,25,Monthly/Annual/Quarterly,26000,0,0,Yes,Yes,Yes
+LIF015,IRA008,Madison Endowment,Endowment,500000,8000000,0,55,10,20,Monthly/Annual/Quarterly,44000,0,3,Yes,Yes,Yes
+LIF016,IRA008,Madison Education,Education,300000,5000000,0,18,5,18,Monthly/Annual,40000,0,2,Yes,No,Yes
+LIF017,IRA015,ICEA Lion Term Life,Term Life,1000000,50000000,18,70,5,30,Monthly/Annual/Quarterly,25000,0,0,Yes,Yes,Yes
+LIF018,IRA015,ICEA Lion Endowment,Endowment,500000,10000000,0,60,10,25,Monthly/Annual/Quarterly,43000,0,3,Yes,Yes,Yes
+LIF019,IRA016,Liberty Term Life,Term Life,1000000,100000000,18,70,5,30,Monthly/Annual/Quarterly,21000,0,0,Yes,Yes,Yes
+LIF020,IRA016,Liberty Endowment,Endowment,500000,15000000,0,60,10,25,Monthly/Annual/Quarterly,41000,0,3,Yes,Yes,Yes
+LIF021,IRA016,Liberty Education,Education,500000,8000000,0,18,5,20,Monthly/Annual,39000,0,2,Yes,No,Yes
+LIF022,IRA018,Old Mutual Term Life,Term Life,1000000,100000000,18,70,5,30,Monthly/Annual/Quarterly,23000,0,0,Yes,Yes,Yes
+LIF023,IRA018,Old Mutual Endowment,Endowment,500000,15000000,0,60,10,25,Monthly/Annual/Quarterly,42000,0,3,Yes,Yes,Yes
+LIF024,IRA018,Old Mutual Education,Education,500000,8000000,0,18,5,20,Monthly/Annual,38000,0,2,Yes,No,Yes
+LIF025,IRA023,Sanlam Term Life,Term Life,1000000,50000000,18,70,5,25,Monthly/Annual/Quarterly,27000,0,0,Yes,Yes,Yes
+LIF026,IRA023,Sanlam Endowment,Endowment,500000,8000000,0,55,10,20,Monthly/Annual/Quarterly,45000,0,3,Yes,Yes,Yes
+LIF027,IRA023,Sanlam Education,Education,300000,5000000,0,18,5,18,Monthly/Annual,41000,0,2,Yes,No,Yes
 )"), stringsAsFactors = FALSE)
 cat("Loaded life_premiums (rows =", nrow(life_premiums), ")\n"); flush.console()
 
 agriculture_products <- read.csv(textConnection(r"(
-product_id,company_id,product_name,crop_type,coverage_type,sum_insured_per_acre_kes,premium_rate_percent,subsidy_available,subsidy_percent,govt_program,min_area_acres,max_area_acres,waiting_perio[...]
+product_id,company_id,product_name,crop_type,coverage_type,sum_insured_per_acre_kes,premium_rate_percent,subsidy_available,subsidy_percent,govt_program,min_area_acres,max_area_acres,waiting_period_days,seasons_covered,weather_index_based,eligibility
 AGR001,IRA001,Jubilee Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
 AGR002,IRA001,Jubilee Livestock Insurance,Cattle/Livestock,Mortality,50000,4,Yes,50,KLIP,5,500,30,1,No,Registered pastoralist
+AGR003,IRA002,Britam Crop Insurance,Wheat,Multi-Peril,35000,5.5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
+AGR004,IRA002,Britam Livestock Insurance,Cattle/Livestock,Mortality,50000,4,Yes,50,KLIP,5,500,30,1,No,Registered pastoralist
+AGR005,IRA003,CIC Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
+AGR006,IRA003,CIC Horticulture Insurance,Vegetables/Fruits,Weather Index,40000,6,Yes,50,KAIP,0.5,50,7,2,Yes,Registered farmer
+AGR007,IRA004,APA Crop Insurance,Maize/Wheat,Multi-Peril,32000,5.2,Yes,50,KAIP,1,100,14,2,No,Registered farmer
+AGR008,IRA005,UAP Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
+AGR009,IRA005,UAP Weather Index Insurance,Maize,Weather Index,30000,4.5,Yes,50,KAIP,1,100,7,2,Yes,Registered farmer
+AGR010,IRA011,AIG Agriculture Insurance,Mixed Crops,Multi-Peril,35000,5.5,No,0,None,1,200,14,2,No,Commercial farmer
+AGR011,IRA014,ICEA Lion Crop Insurance,Maize,Multi-Peril,30000,5,Yes,50,KAIP,1,100,14,2,No,Registered farmer
+AGR012,IRA028,CIC Co-op Crop Insurance,Maize,Multi-Peril,28000,4.8,Yes,50,KAIP,1,100,14,2,No,Co-op member
 )"), stringsAsFactors = FALSE)
 cat("Loaded agriculture_products (rows =", nrow(agriculture_products), ")\n"); flush.console()
 
 nhif_data <- read.csv(textConnection(r"(
 benefit_category,benefit_name,description,coverage_limit_kes,co_payment_required,co_payment_amount_kes,waiting_period_days,eligibility,notes
 Inpatient,General Ward,Admission in general ward,999999999,No,0,0,All members,No co-payment for members
+Inpatient,Private Room,Admission in private room,999999999,Yes,0,0,All members,Co-payment depends on hospital category
+Inpatient,ICU/HDU,Critical care admission,999999999,No,0,0,All members,Covered fully
+Inpatient,Surgery,All surgical procedures,999999999,No,0,0,All members,Covered fully
+Inpatient,Maternity,Normal delivery,999999999,No,0,0,All female members,Covered fully
+Inpatient,Caesarean Section,CS delivery,999999999,No,0,0,All female members,Covered fully
+Outpatient,Consultation,Doctor consultation,999999999,No,0,0,All members,Covered fully
+Outpatient,Laboratory,Lab tests and investigations,999999999,No,0,0,All members,Covered fully
+Outpatient,Radiology,X-rays and scans,999999999,No,0,0,All members,Covered fully
+Outpatient,Pharmacy,Prescribed medications,999999999,No,0,0,All members,Covered fully
+Outpatient,Dental,Basic dental services,999999999,No,0,0,All members,Covered fully
+Outpatient,Optical,Basic eye care and glasses,999999999,No,0,0,All members,Covered fully
+Outpatient,Physiotherapy,Physical therapy sessions,999999999,No,0,0,All members,Covered fully
+Outpatient,Occupational Therapy,Occupational therapy,999999999,No,0,0,All members,Covered fully
+Specialized,Oncology,Cancer treatment,999999999,No,0,0,All members,Covered fully
+Specialized,Dialysis,Kidney dialysis,999999999,No,0,0,All members,Covered fully
+Specialized,Radiotherapy,Cancer radiotherapy,999999999,No,0,0,All members,Covered fully
+Specialized,Organ Transplant,Kidney transplant,999999999,No,0,0,All members,Covered fully
+Specialized,Rehabilitation,Drug and substance rehabilitation,999999999,No,0,0,All members,Covered fully
 )"), stringsAsFactors = FALSE)
 cat("Loaded nhif_data (rows =", nrow(nhif_data), ")\n"); flush.console()
 
 regulatory_data <- read.csv(textConnection(r"(
 authority_name,full_name,established_year,headquarters,website,phone,email,physical_address,functions,license_renewal_fee_kes,complaint_hotline,annual_report_url
-Insurance Regulatory Authority,Insurance Regulatory Authority of Kenya,2006,Nairobi,www.ira.go.ke,+254 20 4996000,info@ira.go.ke,"Zep-Re Place 1st Floor Longonot Road Upper Hill Nairobi",Regulati[...]
+Insurance Regulatory Authority,Insurance Regulatory Authority of Kenya,2006,Nairobi,www.ira.go.ke,+254 20 4996000,info@ira.go.ke,"Zep-Re Place 1st Floor Longonot Road Upper Hill Nairobi",Regulation and supervision of insurance industry,50000,0709 912 000,https://www.ira.go.ke/annual-reports/
 )"), stringsAsFactors = FALSE)
 cat("Loaded regulatory_data (rows =", nrow(regulatory_data), ")\n"); flush.console()
+
 
 # ============================================================
 # TIPS DATA

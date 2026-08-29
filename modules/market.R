@@ -37,7 +37,7 @@ market_ui <- function(id) {
 
 market_server <- function(id) {
   moduleServer(id, function(input, output, session) {
-
+    
     output$main_plot <- renderPlotly({
       metric <- input$metric
       df <- insurance_companies %>% arrange(desc(!!sym(metric))) %>% head(input$top_n)
@@ -46,11 +46,11 @@ market_server <- function(id) {
                   "Composite" = "#0066CC", "General" = "#00C853", "Life" = "#FFB300", "Islamic" = "#00B8D4",
                   "Excellent" = "#00C853", "Very Good" = "#64DD17", "Good" = "#FFB300", "Fair" = "#FF9100")
       used <- colors[names(colors) %in% unique(df[[input$color_by]])]
-
+      
       if (input$chart_type == "Bar Chart") {
         plot_ly(df, x = ~company_ordered, y = df[[metric]], type = "bar",
                 color = df[[input$color_by]], colors = used,
-                text = ~scales::comma(round(!!sym(metric), 1)), textposition = "outside") %>%
+                text = scales::comma(round(df[[metric]], 1)), textposition = "outside") %>%
           layout(xaxis = list(title = ""), yaxis = list(title = metric),
                  paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
                  margin = list(b = 100))
@@ -64,7 +64,7 @@ market_server <- function(id) {
           layout(paper_bgcolor = "rgba(0,0,0,0)")
       }
     })
-
+    
     output$stats_ui <- renderUI({
       top3 <- sum(head(insurance_companies$market_share_percent[order(insurance_companies$market_share_percent, decreasing = TRUE)], 3))
       tagList(
@@ -79,7 +79,7 @@ market_server <- function(id) {
             p("Life: ", strong(sum(insurance_companies$category == "Life"))))
       )
     })
-
+    
     output$product_dist <- renderPlotly({
       prods <- insurance_products %>% group_by(category, sub_category) %>% summarise(count = n(), .groups = "drop")
       plot_ly(prods, x = ~category, y = ~count, color = ~sub_category, type = "bar") %>%
@@ -87,7 +87,7 @@ market_server <- function(id) {
                paper_bgcolor = "rgba(0,0,0,0)", plot_bgcolor = "rgba(0,0,0,0)",
                legend = list(orientation = "h", y = -0.3))
     })
-
+    
     output$rating_dist <- renderPlotly({
       ratings <- insurance_companies %>% group_by(financial_rating) %>% summarise(count = n(), avg_share = mean(market_share_percent), .groups = "drop")
       plot_ly(ratings, x = ~financial_rating, y = ~count, type = "bar",
